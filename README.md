@@ -6,7 +6,7 @@ angular webpack
 
 Slush generator for a starter Angular Formly Webpack. 
 
-This a very early start to an Angular Formly Scaffold with a focus on deployment within a Salesforce enviroment.
+A very early start to an Angular Formly Scaffold with a focus on deployment within a Salesforce enviroment.
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install -g slush-angular-webpack
 
 ## Usage
 
-TBD
+slush angular-webpack
 
 ## Development
 
