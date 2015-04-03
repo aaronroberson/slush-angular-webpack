@@ -1,6 +1,8 @@
 angular webpack
 ==============
 
+[![Join the chat at https://gitter.im/CodeScience/slush-angular-webpack](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodeScience/slush-angular-webpack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ![](http://thevelourfog.github.io/src/content/svg/shield.svg)
 ![](https://avatars3.githubusercontent.com/u/2105791?v=3&s=200)
 
