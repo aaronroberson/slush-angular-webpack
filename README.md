@@ -20,11 +20,20 @@ npm install -g slush-angular-webpack
 
 ## Usage
 
+```bash
 slush angular-webpack
+```
 
 ## Development
 
+
 From within your new project directory run:
+
+```bash
+webpack
+```
+
+Then run:
 
 ```bash
 webpack-dev-server --progress --colors
@@ -32,14 +41,12 @@ webpack-dev-server --progress --colors
 
 ### Build/Deploy
 
-```bash
- 
-```
+Coming soon with a Salesforce and non-Salesforce Config options...
 
 ## Structure
 - pack/
 	- node_modules/
-		- angular2 dependencies
+		
 	- app/
 		- index.html
 		- index.js
@@ -54,7 +61,12 @@ webpack-dev-server --progress --colors
 			- MainController.js 
 
 #### CSS Preprocessors
-Soon.
+
+- LESS is currently the only default option.
+
+- The recommended pattern is to use one LESS file per component.
+
+- Simply apply a namespace for each component to isolate the component's style.
 
 #### JS Supersets
 Soon. 

@@ -12,8 +12,20 @@ module.exports = {
         path: __dirname + '/app', // TODO: create from slush question....
         filename: 'bundle.js'
     },
-    module:{
+    module:{ 
+        preLoaders: [
+            /*{
+                test: /\.js$/, // include .js files 
+                exclude: /node_modules/, // exclude any and all files in the node_modules folder 
+                loader: "jshint-loader"
+            }*/
+
+        ],
         loaders:[
+            {
+                test: /\.less$/,
+                loader: "style!css!less?strictMath&noIeCompat"
+            },
             { test: /\.css$/, loader: "style-loader!css-loader" },
             { test: /\.html$/, exclude: /node_modules/, loader: 'raw-loader' }
         ]

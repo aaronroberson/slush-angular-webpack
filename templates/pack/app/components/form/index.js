@@ -1,4 +1,4 @@
 module.exports = function(ngModule){
-    require("./previewForm.css");
+    require("!style!css!less!./previewForm.less");
     require('./previewForm')(ngModule);
 };
