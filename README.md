@@ -6,7 +6,6 @@ angular webpack
 ![](http://thevelourfog.github.io/src/content/svg/shield.svg)
 ![](https://avatars3.githubusercontent.com/u/2105791?v=3&s=200)
 
-Slush generator for a starter Angular Formly Webpack. 
 
 A very early start to an Angular Formly Scaffold with a focus on deployment within a Salesforce enviroment.
 
