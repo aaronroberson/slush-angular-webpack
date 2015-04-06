@@ -20,9 +20,13 @@ npm install -g slush-angular-webpack
 
 ## Usage
 
+From within your new project directory** run:
+
 ```bash
 slush angular-webpack
 ```
+
+** For Salesforce run from within your existing project on the same level as the default src directory.
 
 ## Development
 
@@ -41,12 +45,11 @@ webpack-dev-server --progress --colors
 
 ### Build/Deploy
 
-Coming soon with a Salesforce and non-Salesforce Config options...
+Coming soon with a Salesforce and non-Salesforce Config option...
 
 ## Structure
-- pack/
-	- node_modules/
-		
+- pack***/
+	- node_modules/	
 	- app/
 		- index.html
 		- index.js
@@ -54,11 +57,13 @@ Coming soon with a Salesforce and non-Salesforce Config options...
 			- form/
 				- index.js
 				- previewForm.js
-				- previewForm.css	
+				- previewForm.less	
 				- previewForm.html
 		- controllers/
-			- index.js # main app and bootstrap
+			- index.js 
 			- MainController.js 
+
+*** pack/ is used instead of src/ to prevent a conflict with the default Salesforce folder structure.
 
 #### CSS Preprocessors
 
@@ -69,7 +74,8 @@ Coming soon with a Salesforce and non-Salesforce Config options...
 - Simply apply a namespace for each component to isolate the component's style.
 
 #### JS Supersets
-Soon. 
+
+Coming Soon. TypeScript... 
 
 ### Test
 

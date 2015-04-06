@@ -1,7 +1,7 @@
 {
   "name": "slush-angular-webpack",
   "description": "A Slush Generator For Angular Webpack",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": {
     "name": "Matthew Carroll",
     "email": "msc654@gmail.com",
@@ -10,14 +10,14 @@
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/CodeScience/slush-angular-webpack"
   },
   "license": {
     "type": "MIT",
-    "url": ""
+    "url": "https://github.com/CodeScience/slush-angular-webpack/blob/master/LICENSE.md"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/CodeScience/slush-angular-webpack/issues"
   },
   "main": "slushfile.js",
   "scripts": {},
