@@ -9,8 +9,7 @@ module.exports = {
     // Source maps support (or 'inline-source-map' also works)
     devtool: 'source-map',
     output: {
-        path: __dirname + '/app', 
-        //path: '../../resource-bundles/xResouceNamex.resource',
+        path: '../../resource-bundles/<%= pageName %>.resource',
         filename: 'bundle.js'
     },
     module:{ 
