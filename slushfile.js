@@ -67,17 +67,24 @@ gulp.task('default', function (done) {
             sfSetup.setupPageAndResource('' + answers.pageName + '');
         }
 
+        // set the page name to none if it is a non salesforce project
+        if(typeof answers.pageName === 'undefined' ){
+
+            answers.pageName = 'none';
+        }
+
         // build project directory
         answers.slug = _.slugify(answers.name);
         answers.camel = _.camelize(answers.slug);
         path.resolve(process.cwd(), answers.slug);
+        files.push(__dirname + '/templates/**');
         files.push(__dirname + '/templates/*');
         files.push(__dirname + '/templates/*.js');
         files.push(__dirname + '/templates/*.css');
-    
+
         return gulp.src(files)
         .pipe(data(function (answers) {
-            return {pageName: ((typeof answers.pageName === 'undefined') ? 'None' : answers.pageName) };
+            return { pageName: answers.pageName };
         }))
         .pipe(template(answers))
         .pipe(rename(function (file) { if (file.basename[0] === '_') { file.basename = '.' + file.basename.slice(1); }}))
