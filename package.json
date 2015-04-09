@@ -1,7 +1,7 @@
 {
   "name": "slush-angular-webpack",
   "description": "A Slush Generator For Angular Webpack",
-  "version": "0.2.3",
+  "version": "0.3.3",
   "author": {
     "name": "Matthew Carroll",
     "email": "msc654@gmail.com",
@@ -30,11 +30,14 @@
     "gulp-replace": "^0.5.3",
     "gulp-template": "^3.0.0",
     "inquirer": "^0.8.2",
-    "sf-placeholder": "^1.0.1",
+    "sf-placeholder": "^1.0.3",
     "underscore.string": "^3.0.3"
   },
   "devDependencies": {},
   "keywords": [
+    "formly",
+    "jsforce",
+    "salesforce",
     "slushgenerator",
     "slush",
     "angularjs",

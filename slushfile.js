@@ -26,7 +26,7 @@ gulp.task('default', function (done) {
             },
             type: 'input', 
             name: 'pageName', 
-            message: 'What should your Statice Resouce and Visualforce page be named?', 
+            message: 'What should your Static Resource and Visualforce page be named?', 
             default: 'mainPage'
         },
         { when: function (response) {
