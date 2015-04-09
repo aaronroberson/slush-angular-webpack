@@ -71,13 +71,13 @@ gulp.task('default', function (done) {
         answers.slug = _.slugify(answers.name);
         answers.camel = _.camelize(answers.slug);
         path.resolve(process.cwd(), answers.slug);
-        files.push(__dirname + '/templates/**');
+        files.push(__dirname + '/templates/*');
         files.push(__dirname + '/templates/*.js');
         files.push(__dirname + '/templates/*.css');
     
         return gulp.src(files)
         .pipe(data(function (answers) {
-            return {pageName: answers.pageName};
+            return {pageName: ((typeof answers.pageName === 'undefined') ? 'None' : answers.pageName) };
         }))
         .pipe(template(answers))
         .pipe(rename(function (file) { if (file.basename[0] === '_') { file.basename = '.' + file.basename.slice(1); }}))
