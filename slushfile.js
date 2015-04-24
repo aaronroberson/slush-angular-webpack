@@ -19,7 +19,7 @@ var gulp = require('gulp'),
 
 gulp.task('default', function (done) {
     inquirer.prompt([
-        {type: 'input', name: 'name', message: 'What should your project be named?', default: 'mainApp'},
+        {type: 'input', name: 'name', message: 'What would you like to name your project?', default: 'mainApp'},
         {type: 'confirm', name: 'salesforce', message: 'Is this a Salesforce project?'}, 
         { when: function (response) {
              return response.salesforce;
@@ -55,10 +55,10 @@ gulp.task('default', function (done) {
     
         // create visualforce page and placeholder
         if(answers.salesforce !== false){
-            console.log(answers.username);
+            /*console.log(answers.username);
             console.log(answers.password);
             console.log(answers.token);
-            console.log(answers.pageName);
+            console.log(answers.pageName);*/
         }
         sfSetup.defineUserName((typeof jsForceConfig === 'undefined') ? '' + answers.username + '' : '' + jsForceConfig.username + '' );
         sfSetup.definePassword((typeof jsForceConfig === 'undefined') ? '' + answers.password + '' : '' + jsForceConfig.password + '');
@@ -77,12 +77,18 @@ gulp.task('default', function (done) {
         answers.slug = _.slugify(answers.name);
         answers.camel = _.camelize(answers.slug);
         path.resolve(process.cwd(), answers.slug);
-        files.push(__dirname + '/templates/**');
-        files.push(__dirname + '/templates/*');
-        files.push(__dirname + '/templates/*.js');
-        files.push(__dirname + '/templates/*.css');
-
-        return gulp.src(files)
+        console.log(__dirname + '/templates');
+        files.push(__dirname + '/templates/webpack.salesforce.js');
+        files.push(__dirname + '/templates/webpack.config.js');
+        files.push(__dirname + '/templates/package.json');
+        files.push(__dirname + '/templates/karma.conf.js');
+        files.push(__dirname + '/templates/app/index.html');
+        files.push(__dirname + '/templates/app/index.js');
+        files.push(__dirname + '/templates/app/controllers/*');
+        files.push(__dirname + '/templates/app/components/form/*');
+        files.push(__dirname + '/templates/app/components/navBar/*');
+        files.push(__dirname + '/templates/app/components/simpleTest/*');
+        return gulp.src(files,{base:__dirname + '/templates' })
         .pipe(data(function (answers) {
             return { pageName: answers.pageName };
         }))
