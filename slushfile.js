@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     _ = require('underscore.string'),
     sfSetup = require('sf-placeholder'),
     data = require('gulp-data');
-    files = [];
+    files = [],
+    mPageName = '';
 
     var jsForceConfig;
     try{ jsForceConfig = require( path.resolve(process.cwd(), 'jsforce.config.js'))}catch(e){}
@@ -55,11 +56,12 @@ gulp.task('default', function (done) {
     
         // create visualforce page and placeholder
         if(answers.salesforce !== false){
-            /*console.log(answers.username);
+            console.log(answers.username);
             console.log(answers.password);
             console.log(answers.token);
-            console.log(answers.pageName);*/
+            console.log(answers.pageName);
         }
+
         sfSetup.defineUserName((typeof jsForceConfig === 'undefined') ? '' + answers.username + '' : '' + jsForceConfig.username + '' );
         sfSetup.definePassword((typeof jsForceConfig === 'undefined') ? '' + answers.password + '' : '' + jsForceConfig.password + '');
         sfSetup.defineToken((typeof jsForceConfig === 'undefined') ? '' + answers.token + '' : '' + jsForceConfig.token + '');
@@ -68,18 +70,20 @@ gulp.task('default', function (done) {
         }
 
         // set the page name to none if it is a non salesforce project
-        if(typeof answers.pageName === 'undefined' ){
+        if(typeof answers.pageName === 'undefined' && mPageName === '' ){
 
             answers.pageName = 'none';
         }
+
+        mPageName = answers.pageName;
 
         // build project directory
         answers.slug = _.slugify(answers.name);
         answers.camel = _.camelize(answers.slug);
         path.resolve(process.cwd(), answers.slug);
-        console.log(__dirname + '/templates');
-        files.push(__dirname + '/templates/webpack.salesforce.js');
+        files.push(__dirname + '/templates/');
         files.push(__dirname + '/templates/webpack.config.js');
+        files.push(__dirname + '/templates/webpack.salesforce.js');
         files.push(__dirname + '/templates/package.json');
         files.push(__dirname + '/templates/karma.conf.js');
         files.push(__dirname + '/templates/app/index.html');
