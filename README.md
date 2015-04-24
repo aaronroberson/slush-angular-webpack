@@ -180,6 +180,19 @@ Coming soon with a Salesforce and non-Salesforce Config option...
 					- previewForm.js
 					- previewForm.less	
 					- previewForm.html
+
+				- navBar/
+					- index.js
+					- navbar.js
+					- navbar.less
+					- navbar.html
+					- navbar.test.js
+				- simpleTest/
+					- index.js
+					- simpleTest.js
+					- simpleTest.less
+					- simpleTest.html
+					- simpleTest.test.js
 			- controllers/
 				- index.js 
 				- MainController.js 
@@ -200,13 +213,29 @@ Coming soon with a Salesforce and non-Salesforce Config option...
 
 Coming Soon. TypeScript... 
 
-## Test
+## Testing
 
-Not ready.
+Karma and Jasmine are now available for unit testing. 
+The build comes preconfigured for PhantomJS but the Chrome launcher is also preinstalled.
+
+To run all unit tests simply run:
+
+```bash
+ NODE_ENV=test karma start karma.conf.js
+```
+This will make sure Angular-Mocks will only loads in test mode.
 
 ## Production
 
 Not ready.
+
+## Docs
+
+- JSDocs Coming Soon..
+
+## JSR mocks
+
+- Coming Soon..
 
 ## License
 
