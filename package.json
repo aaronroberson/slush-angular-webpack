@@ -1,7 +1,7 @@
 {
   "name": "slush-angular-webpack",
   "description": "A Slush Generator For Angular Webpack",
-  "version": "0.4.5",
+  "version": "0.5.0",
   "author": {
     "name": "Matthew Carroll",
     "email": "msc654@gmail.com",

@@ -33,10 +33,10 @@ Next run:
 slush angular-webpack
 ```
 
-The generator will then ask you to enter the project or app name. 
+The generator will then ask you to enter the project ( A VisualForce page will only be created for SF projects ).
 
 ```bash
-What should your project be named?(mainApp)  myDemoApp
+What would you like to name your project or VisualForce page?
 ```
 
 Followed by:
@@ -45,7 +45,7 @@ Followed by:
 Is this a Salesforce project? (Y/n) n
 ```
 
-That is all it takes. The generator will build the project inside of a new folder with the name you entered. 
+That is all it takes. The generator will build the project inside of a new folder with the name you entered.
 
 ### The Salesforce path:
 
@@ -53,7 +53,7 @@ Using this generator for a Salesforce build makes a few assumptions about the ot
 
 It is recommend that you use Sublime Text 3 with the MavensMate plugin to connect to your Org and pull down the existing project code from the server.  See [Mavens Mate](http://mavensmate.com/) for more info on this process.
 
-Once this is complete and a local version of the project exists, navigate to the project directory. You will notice that there is an existing `src/`  directory in the project containing Salesforce's Visualforce pages, Classes, Triggers and more. 
+Once this is complete and a local version of the project exists, navigate to the project directory. You will notice that there is an existing `src/`  directory in the project containing Salesforce's Visualforce pages, Classes, Triggers and more.
 
 To avoid a conflict with this `src/` directory create and then navigate to a new `pack/` folder on the same level.
 
@@ -68,16 +68,16 @@ From the `pack/` directory run:
 
 ```bash
 touch jsforce.config.js
-``` 
+```
 In the editor of your choice add you credentials in this pattern:
 
 ```javascript
 module.exports = {
 
     username: 'USERNAME',
-   	password: 'PASSWORD',
+    password: 'PASSWORD',
     token: 'TOKEN'
-	
+
 };
 ```
 Now run:
@@ -86,10 +86,10 @@ Now run:
 slush angular-webpack
 ```
 
-The generator will then ask you to enter the project or app name. 
+The generator will then ask you to enter the project ( A VisualForce page will only be created for SF projects ).
 
 ```bash
-What should your project be named?(mainApp)  myDemoApp
+What would you like to name your project or VisualForce page?
 ```
 
 Followed by:
@@ -97,30 +97,9 @@ Followed by:
 ```bash
 Is this a Salesforce project? (Y/n) y
 ```
-Next you will be asked:
 
-```bash
-What should your Static Resource and Visualforce page be named?(mainPage) myDemoPage
-```
 The generator will then create your new Visualforce page and the corresponding Static Resource on your remote Salesforce Org.
-Then it will build the project inside of a new folder with the app name you entered. 
-
-At this point you have new project folder that lives inside of the `pack/` directory and newly created remote assets. 
-To bring your local project in sync: (From Sublime Text/Maven's Mate) 
-
-`right-click on project root > MavensMate >Refresh From Server `
-
-This will pull down the new Visualforce page and Static Resource to your local project.
-
-Finally create a resource bundle through MavensMate:
-
-`('command/control' + shift + p)`  to open Sublime's smart search and begin to type: `Create Resource Bundle`
-
-Select this option and then pick the name of your newly created Static Resource by pressing enter.
-
-This will add a `resource-bundles/` folder to your Salesforce project containing the expanded version of your static resource.
-
-See the Salesforce section below for info on how to build and deploy with your resource bundles.
+Then it will build the project inside of a new folder with the app name you entered.
 
 ## Development Build/Deploy
 
@@ -137,18 +116,48 @@ Then run:
 ```bash
 webpack-dev-server --progress --colors
 ```
+or you can run the shortcut:
 
-This will start a server at localhost:8080
+```bash
+npm start
+```
+
+This will start a server at localhost:8080/app
 
 ### The Salesforce path:
 
-From within your new project directory run:
+The simplest way to deploy your changes to your Org is to run the following command one time per dev session.
 
 ```bash
-webpack --config webpack.salesforce.js
+npm run-script sf-auto-build-deploy
 ```
 
-This will use Webpack to build your bundle.js file and place it within the expanded static resource fold within the `resource-bundles/` directory.
+ The script will start a watch process within webpack and on successful build the changes will deployed to current Org.
+
+ If you prefer more control in your deployment process you will need to manually set up your resource bundle in your MavenMate project.
+
+At this point you should have a new project folder that lives inside of the `pack/` directory and newly created remote assets.
+To bring your local project in sync: (From Sublime Text/Maven's Mate)
+
+`right-click on project root > MavensMate >Refresh From Server `
+
+This will pull down the new Visualforce page and Static Resource to your local project.
+
+Finally create a resource bundle through MavensMate:
+
+`('command/control' + shift + p)`  to open Sublime's smart search and begin to type: `Create Resource Bundle`
+
+Select this option and then pick the name of your newly created Static Resource by pressing enter.
+
+This will add a `resource-bundles/` folder to your Salesforce project containing the expanded version of your static resource.
+
+From this point on you can the run the command below to auto build on save.
+
+ ```bash
+ npm run-script sf-auto-build
+ ```
+
+This will use Webpack to watch for changes and build your bundle.js file and place it within the expanded static resource folder within the `resource-bundles/` directory.
 
 To deploy to your Salesforce org for testing open your new static resource. You may notice a `placeholder/` folder along with the bundle.js and bundle.js.map. Delete the `placeholder/` folder.
 
@@ -168,34 +177,40 @@ Coming soon with a Salesforce and non-Salesforce Config option...
 
 ## Structure
 - pack***/
-	- jsforce.config.js****
-	- UserDefinedAppName/
-		- node_modules/	
-		- app/
-			- index.html
-			- index.js
-			- components/
-				- form/
-					- index.js
-					- previewForm.js
-					- previewForm.less	
-					- previewForm.html
+    - jsforce.config.js****
+    - UserDefinedAppName/
+        - karma.conf.js
+        - package.json
+        - webpack.config.js
+        - webpack.config.js
+        - webpack.salesforce.js
+        - webpack.salesforce.deploy.js
+        - node_modules/
+        - app/
+            - index.html
+            - index.js
+            - components/
+                - form/
+                    - index.js
+                    - previewForm.js
+                    - previewForm.less
+                    - previewForm.html
 
-				- navBar/
-					- index.js
-					- navbar.js
-					- navbar.less
-					- navbar.html
-					- navbar.test.js
-				- simpleTest/
-					- index.js
-					- simpleTest.js
-					- simpleTest.less
-					- simpleTest.html
-					- simpleTest.test.js
-			- controllers/
-				- index.js 
-				- MainController.js 
+                - navBar/
+                    - index.js
+                    - navbar.js
+                    - navbar.less
+                    - navbar.html
+                    - navbar.test.js
+                - simpleTest/
+                    - index.js
+                    - simpleTest.js
+                    - simpleTest.less
+                    - simpleTest.html
+                    - simpleTest.test.js
+            - controllers/
+                - index.js
+                - MainController.js
 
 *** pack/ manually created and used instead of src/ to prevent a conflict with the default Salesforce folder structure.
 
@@ -211,17 +226,17 @@ Coming soon with a Salesforce and non-Salesforce Config option...
 
 ## JS Supersets
 
-Coming Soon. TypeScript... 
+Coming Soon. TypeScript...
 
 ## Testing
 
-Karma and Jasmine are now available for unit testing. 
+Karma and Jasmine are now available for unit testing.
 The build comes preconfigured for PhantomJS but the Chrome launcher is also preinstalled.
 
 To run all unit tests simply run:
 
 ```bash
- NODE_ENV=test karma start karma.conf.js
+ npm test
 ```
 This will make sure Angular-Mocks will only loads in test mode.
 
