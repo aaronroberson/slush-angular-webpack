@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-    
+
     context: __dirname + '/app',
     entry: './index.js',
     // Currently we need to add '.ts' to resolve.extensions array.
@@ -11,7 +11,7 @@ module.exports = {
     // Source maps support (or 'inline-source-map' also works)
     devtool: 'source-map',
     output: {
-        path: __dirname + '/app', 
+        path: __dirname + '/app',
         //path: '../../resource-bundles/xResouceNamex.resource',
         filename: 'bundle.js'
     },
@@ -20,12 +20,13 @@ module.exports = {
             ON_TEST: (process.env.NODE_ENV === 'test') ? true : false
         })
     ],
+    
 
-    module:{ 
+    module:{
         preLoaders: [
             /*{
-                test: /\.js$/, // include .js files 
-                exclude: /node_modules/, // exclude any and all files in the node_modules folder 
+                test: /\.js$/, // include .js files
+                exclude: /node_modules/, // exclude any and all files in the node_modules folder
                 loader: "jshint-loader"
             }*/
 

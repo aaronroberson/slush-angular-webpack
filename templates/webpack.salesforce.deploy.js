@@ -1,6 +1,7 @@
 //after-compile(c: Compilation)
 var webpack = require('webpack');
 var path = require('path');
+
 var WebpackSalesforceDeployPlugin = require('webpack-salesforce-deploy-plugin');
 module.exports = {
 
@@ -21,8 +22,9 @@ module.exports = {
             ON_TEST: (process.env.NODE_ENV === 'test') ? true : false
         }),
         new WebpackSalesforceDeployPlugin({
-            projectPath : __dirname + '/../../',
-            resourcePath : __dirname + '/../../resource-bundles/' + path.basename(__dirname) + '.resource/'
+            jsConfigPath : __dirname + '/../jsforce.config.js',
+            resourcePath : __dirname + '/../../resource-bundles/' + path.basename(__dirname) + '.resource/bundle.js',
+            assetName : path.basename(__dirname)
         })
     ],
     module:{
