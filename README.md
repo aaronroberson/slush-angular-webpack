@@ -208,9 +208,12 @@ Coming soon with a Salesforce and non-Salesforce Config option...
                     - simpleTest.less
                     - simpleTest.html
                     - simpleTest.test.js
-            - controllers/
-                - index.js
-                - MainController.js
+            - states/
+                - main/
+                    - index.js
+                    - main.js
+                    - main.html
+                    - main.less
 
 *** pack/ manually created and used instead of src/ to prevent a conflict with the default Salesforce folder structure.
 

@@ -18,7 +18,11 @@ module.exports = {
     plugins:[
         new webpack.DefinePlugin({
             ON_TEST: (process.env.NODE_ENV === 'test') ? true : false
+        }),
+         new webpack.DefinePlugin({
+            IS_LOCAL: (process.env.NODE_ENV === 'local') ? true : false
         })
+
     ],
     
 
