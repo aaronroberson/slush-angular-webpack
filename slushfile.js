@@ -76,7 +76,7 @@ gulp.task('default', function (done) {
         files.push(__dirname + '/templates/karma.conf.js');
         files.push(__dirname + '/templates/app/index.html');
         files.push(__dirname + '/templates/app/index.js');
-        files.push(__dirname + '/templates/app/controllers/*');
+        files.push(__dirname + '/templates/app/states/main/*');
         files.push(__dirname + '/templates/app/components/form/*');
         files.push(__dirname + '/templates/app/components/navBar/*');
         files.push(__dirname + '/templates/app/components/simpleTest/*');

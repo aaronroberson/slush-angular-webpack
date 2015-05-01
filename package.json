@@ -30,7 +30,7 @@
     "gulp-replace": "^0.5.3",
     "gulp-template": "^3.0.0",
     "inquirer": "^0.8.2",
-    "sf-placeholder": "^1.0.3",
+    "sf-placeholder": "^1.0.5",
     "underscore.string": "^3.0.3"
   },
   "devDependencies": {

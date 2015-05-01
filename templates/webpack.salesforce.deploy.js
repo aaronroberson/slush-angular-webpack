@@ -21,6 +21,9 @@ module.exports = {
         new webpack.DefinePlugin({
             ON_TEST: (process.env.NODE_ENV === 'test') ? true : false
         }),
+        new webpack.DefinePlugin({
+            IS_LOCAL: (process.env.NODE_ENV === 'local') ? true : false
+        }),
         new WebpackSalesforceDeployPlugin({
             jsConfigPath : __dirname + '/../jsforce.config.js',
             resourcePath : __dirname + '/../../resource-bundles/' + path.basename(__dirname) + '.resource/bundle.js',
